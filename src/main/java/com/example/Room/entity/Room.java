@@ -5,25 +5,52 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Table(name = "Room_tabel")
 public class Room {
 
     @Id
     @GeneratedValue
-    private int Id;
+    @Column(name = "IdRoom")
+    private int IdRoom;
+    @Column(name = "typeRoom")
+    private char typeRoom;
+    @Column(name = "isVailed")
     private boolean isVailed ;
+    @Column(name = "nameCustmor")
     private char nameCustmor;
 
-    public boolean getIsVailed() {
+    public Room() {
+    }
+    public int getIdRoom() {
+        return IdRoom;
+    }
+    public void setIdRoom(int idRoom) {
+        IdRoom = idRoom;
+    }
+
+    public char getTypeRoom() {
+        return typeRoom;
+    }
+
+    public void setTypeRoom(char typeRoom) {
+        this.typeRoom = typeRoom;
+    }
+
+    public boolean isVailed() {
         return isVailed;
+    }
+
+    public void setVailed(boolean vailed) {
+        isVailed = vailed;
+    }
+
+    public char getNameCustmor() {
+        return nameCustmor;
+    }
+
+    public void setNameCustmor(char nameCustmor) {
+        this.nameCustmor = nameCustmor;
     }
 }

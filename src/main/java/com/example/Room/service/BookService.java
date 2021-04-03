@@ -1,8 +1,8 @@
 package com.example.Room.service;
 
-
 import com.example.Room.entity.Book;
-import com.example.Room.repository.BookRepository;
+
+import com.example.Room.repository.BooksRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.List;
 public class BookService {
 
     @Autowired
-    private BookRepository repository;
+    private BooksRepository repository;
     //post method//
 
     public Book saveBook(Book book){
@@ -46,10 +46,11 @@ public class BookService {
     }
 
 
-       //updata method//
+    //updata method//
     public Book updataBook(Book book){
-        Book existingBook = repository.findById(book.getId()).orElse(null);
-        existingBook.setVailed(book.getIsVailed());
+        Book existingBook = repository.findById(book.getIdBook()).orElse(null);
+        existingBook.setIdRoom(book.getIdRoom());
+        existingBook.setIs_vailed(book.isIs_vailed());
         existingBook.setNameCustmor(book.getNameCustmor());
         return repository.save(existingBook);
     }

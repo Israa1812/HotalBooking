@@ -12,6 +12,8 @@ public class RoomService {
 
     @Autowired
     private RoomRepository repository;
+
+
         //post method//
 
     public Room saveRoom(Room room){
@@ -24,7 +26,7 @@ public class RoomService {
 
 
         //get method//
-        public List<Room> getRoom(){
+    public List<Room> getRoom(){
             return repository.findAll();
         }
 
@@ -47,8 +49,9 @@ public class RoomService {
 
         //updata method//
     public Room updataRoom(Room room){
-        Room existingRoom = repository.findById(room.getId()).orElse(null);
-        existingRoom.setVailed(room.getIsVailed());
+        Room existingRoom = repository.findById(room.getIdRoom()).orElse(null);
+        existingRoom.setVailed(room.isVailed());
+        existingRoom.setTypeRoom(room.getTypeRoom());
         existingRoom.setNameCustmor(room.getNameCustmor());
         return repository.save(existingRoom);
     }
